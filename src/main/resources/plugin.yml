@@ -1,0 +1,4 @@
+main: ${project.groupId}.Roads
+name: ${project.artifactId}
+version: ${project.version}
+author: FxMxGRAGFX
