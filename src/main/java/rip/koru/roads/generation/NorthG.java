@@ -10,6 +10,8 @@ import org.bukkit.block.BlockState;
 import org.bukkit.entity.Player;
 import org.bukkit.material.Stairs;
 import rip.koru.roads.manager.RoadGenerator;
+import rip.koru.roads.utils.Adapter;
+import rip.koru.roads.utils.RoadDirection;
 import rip.koru.roads.utils.Utils;
 
 import java.text.DecimalFormat;
@@ -48,7 +50,7 @@ public class NorthG {
                     mats.put(mats.size() + 1, type);
                 }
                 Material selected = mats.get(Utils.getRandomNumber(1, mats.size() + 1));
-                adapt(blockTop, selected);
+                Adapter.adapt(player, RoadDirection.NORHT);
                 blockTop.getBlock().setType(selected);
                 placeBedrock(blockTop);
             }
