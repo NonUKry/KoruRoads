@@ -16,4 +16,17 @@ public class StructureUtils {
             l.setY(l.getY() + 1);
         }
     }
+
+    public static void placeBedrock(Location bedrock) {
+        bedrock.setY(bedrock.getY() - 1);
+        bedrock.getBlock().setType(Material.BEDROCK);
+        bedrock.setY(bedrock.getY() - 1);
+        bedrock.getBlock().setType(Material.BEDROCK);
+        bedrock.setY(bedrock.getY() - 1);
+        bedrock.getBlock().setType(Material.BEDROCK);
+        bedrock.setY(bedrock.getY() - 1);
+        bedrock.getBlock().setType(Material.BEDROCK);
+        bedrock.setY(bedrock.getY() - 1);
+        bedrock.getBlock().setType(Material.BEDROCK);
+    }
 }

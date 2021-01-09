@@ -3,13 +3,14 @@ package rip.koru.roads.generation;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.BlockState;
 import org.bukkit.entity.Player;
 import org.bukkit.material.Stairs;
 import rip.koru.roads.manager.RoadGenerator;
+import rip.koru.roads.utils.Adapter;
+import rip.koru.roads.utils.RoadDirection;
 import rip.koru.roads.utils.Utils;
 
 import java.text.DecimalFormat;
@@ -34,9 +35,9 @@ public class SouthG {
                     Material type = Material.getMaterial(Integer.parseInt(s));
                     mats.put(mats.size() + 1, type);
                 }
-                blockTop.getBlock().setType(mats.get(Utils.getRandomNumber(1, mats.size() + 1)));
-                buildBedrock(blockTop);
-
+                Material selected = mats.get(Utils.getRandomNumber(1, mats.size() + 1));
+                blockTop.getBlock().setType(selected);
+                Adapter.adapt(blockTop,RoadDirection.NORHT);
             }
             for (int x = -0; x > -5; x--) {
                 Location blockTop = RoadGenerator.topBlock(player, x, z);
@@ -45,8 +46,9 @@ public class SouthG {
                     Material type = Material.getMaterial(Integer.parseInt(s));
                     mats.put(mats.size() + 1, type);
                 }
-                blockTop.getBlock().setType(mats.get(Utils.getRandomNumber(1, mats.size() + 1)));
-                buildBedrock(blockTop);
+                Material selected = mats.get(Utils.getRandomNumber(1, mats.size() + 1));
+                blockTop.getBlock().setType(selected);
+                Adapter.adapt(blockTop,RoadDirection.NORHT);
             }
             double porcentaje = Math.abs(((double)z * 100.0 / (double)max)) ;
             Bukkit.broadcastMessage("Generating the road SOUTH: " + new DecimalFormat("##.##").format((porcentaje)) + "%");

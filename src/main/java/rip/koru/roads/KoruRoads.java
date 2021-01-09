@@ -14,7 +14,7 @@ import java.lang.reflect.Field;
  * Project: KoruRoads
  **/
 
-public class Roads extends JavaPlugin {
+public class KoruRoads extends JavaPlugin {
 
     @Override
     public void onEnable() {
@@ -28,6 +28,6 @@ public class Roads extends JavaPlugin {
         } catch (IllegalAccessException | NoSuchFieldException e) {
             e.printStackTrace();
         }
-        getServer().getConsoleSender().sendMessage(CC.WHITE + "Roads by FxMxGRAGFX Enabled!");
+        getServer().getConsoleSender().sendMessage(CC.WHITE + "[KoruRoads] Developed by FxMxGRAGFX has been enabled!");
     }
 }

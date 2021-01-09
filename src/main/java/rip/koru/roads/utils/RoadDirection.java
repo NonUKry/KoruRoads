@@ -10,5 +10,5 @@ public enum RoadDirection {
     NORHT,
     SOUTH,
     WHEST,
-    EST;
+    EAST
 }

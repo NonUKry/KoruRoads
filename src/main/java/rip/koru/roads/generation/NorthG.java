@@ -3,7 +3,6 @@ package rip.koru.roads.generation;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.BlockState;
@@ -37,10 +36,8 @@ public class NorthG {
                     mats.put(mats.size() + 1, type);
                 }
                 Material selected = mats.get(Utils.getRandomNumber(1, mats.size() + 1));
-                adapt(blockTop, selected);
                 blockTop.getBlock().setType(selected);
-                placeBedrock(blockTop);
-
+                Adapter.adapt(blockTop,RoadDirection.NORHT);
             }
             for (int x = -0; x > -5; x--) {
                 Location blockTop = RoadGenerator.topBlock(player, x, z);
@@ -50,9 +47,8 @@ public class NorthG {
                     mats.put(mats.size() + 1, type);
                 }
                 Material selected = mats.get(Utils.getRandomNumber(1, mats.size() + 1));
-                Adapter.adapt(player, RoadDirection.NORHT);
                 blockTop.getBlock().setType(selected);
-                placeBedrock(blockTop);
+                Adapter.adapt(blockTop,RoadDirection.NORHT);
             }
             double porcentaje = Math.abs(((double)z * 100.0 / (double)max)) ;
             Bukkit.broadcastMessage("Generating the road NORTH: " + new DecimalFormat("##.##").format((porcentaje)) + "%");
@@ -106,19 +102,6 @@ public class NorthG {
             l.getBlock().setType(Material.AIR);
             l.setY(l.getY() + 1);
         }
-    }
-
-    private static void placeBedrock(Location bedrock) {
-        bedrock.setY(bedrock.getY() - 1);
-        bedrock.getBlock().setType(Material.BEDROCK);
-        bedrock.setY(bedrock.getY() - 1);
-        bedrock.getBlock().setType(Material.BEDROCK);
-        bedrock.setY(bedrock.getY() - 1);
-        bedrock.getBlock().setType(Material.BEDROCK);
-        bedrock.setY(bedrock.getY() - 1);
-        bedrock.getBlock().setType(Material.BEDROCK);
-        bedrock.setY(bedrock.getY() - 1);
-        bedrock.getBlock().setType(Material.BEDROCK);
     }
 
     public static void buildStair(Location l, Material block) {
@@ -212,16 +195,5 @@ public class NorthG {
         l.setZ(l.getZ() - 1);
         l.getBlock().setType(block);
 
-    }
-
-    public static boolean isApt(Location l) {
-        l.setZ(l.getZ() - 12);
-        if (l.getBlock().getType() != Material.AIR) {
-            l.setY(l.getY() + 5);
-            if (l.getBlock().getType() != Material.AIR) {
-                return true;
-            }
-        }
-        return false;
     }
 }

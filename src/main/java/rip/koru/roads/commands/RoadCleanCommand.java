@@ -22,19 +22,24 @@ public class RoadCleanCommand extends Command {
     @Override
     public boolean execute(CommandSender sender, String label, String[] args) {
         if(!(sender instanceof Player)) {
-            sender.sendMessage(CC.RED + "No console!");
+            sender.sendMessage(CC.RED + "[KoruRoads] No console!");
             return false;
         }
         Player player = (Player) sender;
-        if(args.length == 2) {
+        if(!player.hasPermission("koruroads.clean")) {
+            player.sendMessage(CC.translate("&7[&cKoruRoads&7] &4You no have permissions to use this!"));
+            return false;
+        }
+        if(args.length == 3) {
             HashMap<String, Integer> cache = new HashMap<String, Integer>();
-            cache.put("anchura", Integer.parseInt(args[0]));
-            cache.put("distancia", Integer.parseInt(args[1]));
+            cache.put("width", Integer.parseInt(args[0]));
+            cache.put("height", Integer.parseInt(args[1]));
+            cache.put("distance", Integer.parseInt(args[2]));
             CacheManager.getCache().put(player, cache);
-            RoadsManager.clean(player);
+            RoadsManager.startClean(player);
             return true;
         }
-        player.sendMessage(CC.RED + "/roadclean <anchura> <distancia>");
+        player.sendMessage(CC.RED + "/roadclean <width> <height> <distance>");
         return false;
     }
 }

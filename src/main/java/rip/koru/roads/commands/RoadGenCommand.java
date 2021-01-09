@@ -1,13 +1,9 @@
 package rip.koru.roads.commands;
-
-import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import rip.koru.roads.generation.NorthG;
-import rip.koru.roads.generation.SouthG;
 import rip.koru.roads.manager.RoadGenerator;
-import rip.koru.roads.manager.RoadsManager;
 import rip.koru.roads.utils.CC;
 
 /**
@@ -30,9 +26,6 @@ public class RoadGenCommand extends Command {
         if(args[0].equalsIgnoreCase("test")) {
             String[] blocks = args[2].split(",");
             NorthG.generate(player, Integer.parseInt(args[1]), blocks);
-            if(NorthG.isApt(player.getLocation())) {
-                NorthG.buildStair(player.getLocation(), Material.COBBLESTONE);
-            }
             return false;
         }
         if(args.length == 1) {
