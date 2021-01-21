@@ -3,15 +3,10 @@ package rip.koru.roads.manager;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import rip.koru.roads.cleaning.EastC;
-import rip.koru.roads.cleaning.NorthC;
-import rip.koru.roads.cleaning.SouthC;
-import rip.koru.roads.cleaning.WestC;
 import rip.koru.roads.utils.CC;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Developed by FxMxGRAGFX
@@ -19,18 +14,17 @@ import java.util.concurrent.TimeUnit;
  **/
 
 public class RoadsManager {
-    
-    public static void startClean(Player player) {
-        long initTime = System.currentTimeMillis();
-        Bukkit.broadcastMessage(CC.GREEN + "Staring to cleaning all roads!, Please wait...");
-        EastC.start(player);
-        WestC.start(player);
-        SouthC.start(player);
-        NorthC.start(player);
-        Bukkit.broadcastMessage(CC.GREEN + "All roads has been cleaned successfully in " + TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - initTime) + " secconds!");
-    }
 
-    public void generate(Player player) {
+    public static void startGeneration(Player player, String[] blocks) {
+        long initTime = System.currentTimeMillis();
+        Bukkit.broadcastMessage(CC.GREEN + "Staring to generating all roads!, Please wait...");
+        //Bukkit.broadcastMessage(CC.GREEN + "Please wait 3s to generate all!");
+        //try {
+        //    Thread.sleep(TimeUnit.SECONDS.toMillis(3));
+        //} catch (InterruptedException e) {
+        //    e.printStackTrace();
+        //}
+        // player.getScoreboard().clearSlot(DisplaySlot.SIDEBAR);
     }
 
     public static List<Material> prohibited = Arrays.asList(
@@ -58,6 +52,7 @@ public class RoadsManager {
             Material.WATER_LILY,
             Material.VINE,
             Material.HUGE_MUSHROOM_1,
-            Material.HUGE_MUSHROOM_2
+            Material.HUGE_MUSHROOM_2,
+            Material.STEP
     );
 }

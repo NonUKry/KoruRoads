@@ -7,8 +7,8 @@ package rip.koru.roads.utils;
 
 public enum RoadDirection {
 
-    NORHT,
+    NORTH,
     SOUTH,
-    WHEST,
+    WEST,
     EAST
 }

@@ -36,7 +36,7 @@ public class CC {
     public static ChatColor PINK = ChatColor.LIGHT_PURPLE;
     public static String MENU_BAR = ChatColor.STRIKETHROUGH + "------------------------";
     public static String CHAT_BAR = ChatColor.STRIKETHROUGH + "------------------------------------------------";
-    public static String SB_BAR = ChatColor.STRIKETHROUGH + "----------------------";
+    public static String SB_BAR = ChatColor.STRIKETHROUGH + "----------------";
 
     public static String translate(String input) {
         return ChatColor.translateAlternateColorCodes('&', input);

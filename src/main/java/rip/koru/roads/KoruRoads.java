@@ -16,6 +16,8 @@ import java.lang.reflect.Field;
 
 public class KoruRoads extends JavaPlugin {
 
+    public static KoruRoads getInstance() { return KoruRoads.getPlugin(KoruRoads.class); }
+
     @Override
     public void onEnable() {
         new CacheManager();

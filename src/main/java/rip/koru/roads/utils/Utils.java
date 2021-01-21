@@ -11,7 +11,7 @@ public class Utils {
 
     public static String LocationToReadableString(Location loc) {
         String ret = "";
-        ret = "X: " + Integer.toString(loc.getBlockX()) + " Y: " + Integer.toString(loc.getBlockY()) + " Z: " + Integer.toString(loc.getBlockZ());
+        ret = "X: " + loc.getBlockX() + " Y: " + loc.getBlockY() + " Z: " + loc.getBlockZ();
         return ret;
     }
 
@@ -21,10 +21,10 @@ public class Utils {
 
     public static boolean check(int input) {
         int n = Math.abs(input);
-        if (n == 0 || n == 9)
+        if (n == 0 || n == 5)
             return true;
-        if (n < 9)
+        if (n < 5)
             return false;
-        return check((int)(n >> 3) - (int)(n & 7));
+        return check((n >> 3) - (n & 7));
     }
 }

@@ -1,21 +1,11 @@
 package rip.koru.roads.generation;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.BlockState;
-import org.bukkit.entity.Player;
 import org.bukkit.material.Stairs;
-import rip.koru.roads.manager.RoadGenerator;
-import rip.koru.roads.utils.Adapter;
-import rip.koru.roads.utils.RoadDirection;
-import rip.koru.roads.utils.Utils;
-
-import java.text.DecimalFormat;
-import java.util.HashMap;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Developed by FxMxGRAGFX
@@ -24,37 +14,6 @@ import java.util.concurrent.TimeUnit;
 
 public class NorthG {
 
-    public static void generate(Player player, int max, String[] blocks) {
-        int y = 100;
-        long m1 = System.currentTimeMillis();
-        for (int z = -0; z > -max; z--) {
-            for (int x = 0; x < 5; x++) {
-                Location blockTop = RoadGenerator.topBlock(player, x, z);
-                HashMap<Integer, Material> mats = new HashMap<Integer, Material>();
-                for(String s : blocks) {
-                    Material type = Material.getMaterial(Integer.parseInt(s));
-                    mats.put(mats.size() + 1, type);
-                }
-                Material selected = mats.get(Utils.getRandomNumber(1, mats.size() + 1));
-                blockTop.getBlock().setType(selected);
-                Adapter.adapt(blockTop,RoadDirection.NORHT);
-            }
-            for (int x = -0; x > -5; x--) {
-                Location blockTop = RoadGenerator.topBlock(player, x, z);
-                HashMap<Integer, Material> mats = new HashMap<Integer, Material>();
-                for(String s : blocks) {
-                    Material type = Material.getMaterial(Integer.parseInt(s));
-                    mats.put(mats.size() + 1, type);
-                }
-                Material selected = mats.get(Utils.getRandomNumber(1, mats.size() + 1));
-                blockTop.getBlock().setType(selected);
-                Adapter.adapt(blockTop,RoadDirection.NORHT);
-            }
-            double porcentaje = Math.abs(((double)z * 100.0 / (double)max)) ;
-            Bukkit.broadcastMessage("Generating the road NORTH: " + new DecimalFormat("##.##").format((porcentaje)) + "%");
-        }
-        Bukkit.broadcastMessage("Road NORTH generated successfully in " + (double) TimeUnit.MILLISECONDS.toSeconds((System.currentTimeMillis() - m1)) + " seconds!");
-    }
 
     public static void adapt(Location l, Material block) {
 
